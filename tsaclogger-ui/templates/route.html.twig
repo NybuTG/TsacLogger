@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{route_name}}</title>
+
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('styles/route.scss') }}">
+    {% endblock %}
+
+    {% block javascripts %}
+        {% block importmap %}{{ importmap('climbing_route') }}{% endblock %}
+    {% endblock %}
+
+</head>
+<body>
+    <header class="title" style="background-color:{{route_color}};color:var(--{{text_color}}_t)">
+        <h1>
+        {% if setter == "" %}
+        {{route_name}}
+        {% else %}
+        {{route_name}}, set by {{setter}}
+        {% endif %}
+        </h1>
+        <button class="close">X</button>
+    </header>
+    <div class="info">
+        
+        <div class="grades">
+            <h2>Grade</h2>
+            <input style="--SLIDER_ACC:{{route_color}}" type="range" min="0" max="30" value="0" class="slider" id="gradeSlider">
+            <p id="myRating"></p>
+            
+            <ul style="grid-template-columns: repeat({{grades|length}}, 1fr);" class="ratings">
+                {% for g in grades %}
+                    <li class="grade">
+                        <div class="bar" style="height:calc({{g.ratings}} * 3vh);background-color:{{route_color}};"></div>
+                        <p>{{g.grade}}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+</body>
+</html>
