@@ -26,7 +26,7 @@ class ClimbingRouteController extends AbstractController
         return json_decode($jsonContent, true);
     }
 
-    #[Route('/routes', name: 'app_climbing_routes')]
+    #[Route('api/routes', name: 'app_climbing_routes')]
     public function get_routes(EntityManagerInterface $entityManager): JsonResponse
     {  
         $routes = $entityManager->getRepository(ClimbingRoute::class)->findAll();
@@ -34,7 +34,7 @@ class ClimbingRouteController extends AbstractController
         return $this->json($this->makeJson($routes));
     }
 
-    #[Route('/route/{id}', name: 'app_climbing_route')]
+    #[Route('api/route/{id}', name: 'app_climbing_route')]
     public function get_route(EntityManagerInterface $entityManager, int $id): JsonResponse
     {
         $route = $entityManager->getRepository(ClimbingRoute::class)->findBy(['id' => $id])[0];
