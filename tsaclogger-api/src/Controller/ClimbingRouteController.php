@@ -13,6 +13,7 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\ClimbingRoute;
+use Doctrine\ORM\EntityManager;
 
 class ClimbingRouteController extends AbstractController
 {
@@ -40,5 +41,17 @@ class ClimbingRouteController extends AbstractController
         $route = $entityManager->getRepository(ClimbingRoute::class)->findBy(['id' => $id])[0];
         
         return $this->json($this->makeJson($route));
+    }
+
+    #[Route('api/new_route', name: 'app_new_route', methods: ["PUT"])]
+    public function set_route(EntityManagerInterface $entityManager): JsonResponse
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+        
+
+        return $this->json([
+            "status" => "success"
+        ]);
     }
 }

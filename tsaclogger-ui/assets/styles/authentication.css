@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,400;1,500&family=Protest+Strike&family=Space+Mono:ital,wght@1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    
+    --BACKGROUND: #1c1c1c;
+    --TEXT: #efefef;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.1rem;
+}
+
+body {
+    background-color: var(--BACKGROUND);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    /* overflow: hidden; */
+}
+
+.login_box {
+    /* background-color: var(--TEXT); */
+    /* width: 100vw; */
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    color: var(--TEXT);
+}
+
+.login_box > h1 {
+    font-family: "Protest Strike", sans-serif;
+    /* margin-bottom: 10vh; */
+    margin-bottom: 3vh;
+    /* margin-top: 1vh; */
+    border-bottom: 2px solid var(--TEXT);
+    font-size: 4.5rem;
+}
+
+.login_form {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 20em;
+    text-align: left;
+    gap: 0.9rem;
+}
+
+.pword_container, #username {
+    background-color: var(--TEXT);
+    border: 0;
+    border-radius: 0.5em;
+    padding: 0.5em;  
+    width: calc(20em - 1em);
+    height: 1.5em;
+}
+
+#submit {
+    height: 2.5em;
+    border-radius: 0.5em;
+    border: 0;
+    background-color: #32a852;
+    color: var(--TEXT);
+}
+
+.password_b, #password {
+    background-color: transparent;
+    border: 0;
+    margin-left: -0.2em;
+    margin-top: 0.15em;
+}
+
+.register {
+    color: var(--TEXT);
+    font-style: italic;
+}

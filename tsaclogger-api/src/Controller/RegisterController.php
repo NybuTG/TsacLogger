@@ -20,7 +20,8 @@ class RegisterController extends AbstractController
     {
         $user = new User();
         $user->setUsername("test.user");
-        $plaintext = "helloworld";
+        $user->setRoles(['ROLE_USER']);
+        $plaintext = "test";
 
         $hashed = $passwordHasher->hashPassword(
             $user,

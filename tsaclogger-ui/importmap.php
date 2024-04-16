@@ -20,6 +20,11 @@ return [
         'path' => './assets/climbing_route.js',
         'entrypoint' => true,
     ],
+    'authentication' => [
+        'path' => './assets/authentication.js',
+        'entrypoint' => true,
+    ],
+
     '@hotwired/stimulus' => [
         'version' => '3.2.2',
     ],
