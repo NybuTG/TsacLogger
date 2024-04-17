@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -44,14 +45,21 @@ class ClimbingRouteController extends AbstractController
     }
 
     #[Route('api/new_route', name: 'app_new_route', methods: ["PUT"])]
-    public function set_route(EntityManagerInterface $entityManager): JsonResponse
+    public function set_route(EntityManagerInterface $entityManager, Request $request): JsonResponse
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
-        
+        $body = json_decode($request->getContent(), false);
 
-        return $this->json([
-            "status" => "success"
-        ]);
+        $croute = new ClimbingRoute();
+        $croute->setName($body->name);
+        $croute->setSetter($body->setter);
+        $croute->setColor($body->color);
+        $croute->setPosition($body->position);
+
+        $entityManager->persist($croute);
+        $entityManager->flush();
+
+        return $this->json($body);
     }
 }
